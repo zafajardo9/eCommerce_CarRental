@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Poppins&family=Roboto&display=swap");
+/* 
+font-family: 'Lato', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; 
+*/
+:root {
+  --font-color: #08090A;
+  --pure-white: #fff;
+  --white: #A7A2A9;
+  --secondary: #A7A2A9;
+  --third: #575A5E;
+  --ui: #222823;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  background-color: var(--ui);
+  font-family: "Montserrat", sans-serif;
+  color: var(--pure-white);
+}
+
+button, input[type=button] {
+  font-family: "Poppins", sans-serif;
+  width: 100px;
+  height: 40px;
+  background-color: var(--ui);
+  color: var(--pure-white);
+  border: none;
+}
+
+nav {
+  color: var(--font-color);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+nav ul {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+nav ul a {
+  color: var(--font-color);
+  text-decoration: none;
+}
+
+nav.scrolled {
+  background-color: rgba(255, 255, 255, 0.779) !important;
+  transition: background-color 200ms linear;
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-image: url(../img/car2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero .left {
+  width: 100%;
+  padding: 1em;
+  color: var(--pure-white);
+}
+.hero .left h1 {
+  font-size: 4rem;
+}
+.hero .right {
+  width: 30%;
+}
+.hero .btn {
+  font-family: "Poppins", sans-serif;
+  margin: 10px;
+  width: 200px;
+  max-width: 300px;
+  height: 70px;
+  color: var(--pure-white);
+  font-weight: bold;
+  border: none;
+  background-color: var(--ui);
+}
+
+.hero-two {
+  width: 100%;
+  display: flex;
+}
+.hero-two .section-details {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.hero-two .section-details .hero-two-container {
+  padding: 30px;
+  width: 100%;
+}
+.hero-two .section-details .hero-two-container i {
+  font-size: 2rem;
+  margin: 10px;
+}
+.hero-two .section-details .hero-two-container h1 {
+  font-size: 1rem;
+  margin: 10px;
+}
+.hero-two .section-details .hero-two-container p {
+  margin: 10px;
+  font-size: 12px;
+  text-align: justify;
+}
+.hero-two .section-details .different {
+  background-color: var(--white);
+  color: var(--ui);
+}
+
+.form {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--pure-white);
+}
+.form .form-container {
+  width: 80%;
+  height: 80vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  display: flex;
+}
+.form .form-container .left-container {
+  width: 100%;
+  color: var(--ui);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form .form-container .left-container form {
+  width: 60%;
+  margin: 30px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form .form-container .left-container form .social-container {
+  display: flex;
+  gap: 30px;
+}
+.form .form-container .left-container form .social-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid;
+  color: var(--ui);
+  border-radius: 50%;
+  text-decoration: none;
+}
+.form .form-container .left-container form h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+.form .form-container .left-container form input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  width: 100%;
+}
+.form .form-container .right-container {
+  border-radius: 15px 0px;
+  width: 100%;
+  background-color: var(--ui);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form .form-container .right-container .right {
+  width: 70%;
+}
+.form .form-container .right-container .right h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.form .form-container .right-container .right p {
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+}
+.form .form-container .right-container .right button {
+  background-color: var(--secondary);
+  color: var(--font-color);
+}/*# sourceMappingURL=style.css.map */
