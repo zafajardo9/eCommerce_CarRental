@@ -63,7 +63,10 @@ function createUser($conn, $name, $email, $userName, $pwd) {
 
 
     $tsql= "INSERT INTO Users (userName,userEmail,userUid,userpwd) VALUES (?,?,?,?);";
-    $params = array($name, $email, $userName, $pwd);
+    
+    $hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
+    
+    $params = array($name, $email, $userName, $hashedpwd);
     $getResults= sqlsrv_query($conn, $tsql, $params);
     $rowsAffected = sqlsrv_rows_affected($getResults);
     //Checker
@@ -90,5 +93,22 @@ function emptyInputLogin($email, $pwd) {
 }
 
 function loginUser($conn, $email, $pwd) {
-    uidExist($conn, $email);
+    $userExists = uidExist($conn, $email);
+
+
+    if ($userExists === false) {
+        header("location: ../login.php?error=loginwrong");
+        exit();
+    }
+
+    $pwdHashed = $userExists["userPwd"];
+    $checkPwd = password_verify($pwd, $pwdHashed);
+
+
+    if ($checkPwd === false) {
+        header("location: ../login.php?error=loginwrong");
+        exit();
+    }else if($checkPwd === false) {
+        //sessions
+    }
 }
