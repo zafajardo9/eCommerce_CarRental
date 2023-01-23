@@ -27,6 +27,22 @@ include_once 'header.php';
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
                 <button>LogIn</button>
+
+
+                <?php
+                if(isset($_GET["error"])) {
+                    if ($_GET["error"] == "emptyinput") {
+                        echo "<p>Pls Input email and password</p>";
+                    }
+                    else if ($_GET["error"] == "loginwrong") {
+                        echo "<p>Error log in details</p>";
+                    }
+                    else if ($_GET["error"] == "none") {
+                        echo "<p>You have now logged in!</p>";
+                    }
+                    
+                }
+                ?>
             </form>
         </div>
     </div>

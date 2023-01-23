@@ -54,6 +54,9 @@ nav ul {
   align-items: center;
   list-style: none;
 }
+nav ul .nav-btn a {
+  margin: 5px;
+}
 nav ul a {
   color: var(--font-color);
   text-decoration: none;
@@ -184,6 +187,15 @@ nav.scrolled {
   border: none;
   padding: 12px 15px;
   width: 100%;
+}
+.form .form-container .left-container form p {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  background-color: var(--ui);
+  color: var(--pure-white);
+  border-radius: 10px;
+  opacity: 0.7;
 }
 .form .form-container .right-container {
   border-radius: 15px 0px;

@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +24,16 @@
             <li><a href="#">Cars</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">FAQ</a></li>
-            <li>
-                <a href="login.php"><button>Log In</button></a>
-                <a href="signup.php"><button>Sign Up</button></a>
+            <li class="nav-btn">
+                <?php
+                if (isset($_SESSION["userEmail"])) {
+                    echo "<a href='profile.php'><button>Profile</button></a>";
+                    echo "<a href='logout.php'><button>Logout</button></a>";
+                }else {
+                    echo "<a href='login.php'><button>Log In</button></a>";
+                    echo "<a href='signup.php'><button>Sign Up</button></a>";
+                }
+                ?>
             </li>
             
         </ul>

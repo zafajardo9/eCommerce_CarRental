@@ -108,7 +108,11 @@ function loginUser($conn, $email, $pwd) {
     if ($checkPwd === false) {
         header("location: ../login.php?error=loginwrong");
         exit();
-    }else if($checkPwd === false) {
-        //sessions
+    }else if($checkPwd === true) {
+        session_start();
+        $_SESSION["id"] = $userExists["id"]; 
+        $_SESSION["userUid"] = $userExists["userUid"];
+        header("location: ../index.php");
+        exit(); 
     }
 }
