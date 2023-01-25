@@ -24,9 +24,9 @@ include_once 'header.php';
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your email</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button>LogIn</button>
+                <input type="email" name="email" placeholder="Email" />
+                <input type="password" name="pwd" placeholder="Password" />
+                <button type="submit" name="submit">Log In</button>
 
 
                 <?php

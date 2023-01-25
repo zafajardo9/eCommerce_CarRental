@@ -64,9 +64,10 @@ function createUser($conn, $name, $email, $userName, $pwd) {
 
     $tsql= "INSERT INTO Users (userName,userEmail,userUid,userpwd) VALUES (?,?,?,?);";
     
-    $hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
+    //$hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
+    //hashing of password
     
-    $params = array($name, $email, $userName, $hashedpwd);
+    $params = array($name, $email, $userName, $pwd);
     $getResults= sqlsrv_query($conn, $tsql, $params);
     $rowsAffected = sqlsrv_rows_affected($getResults);
     //Checker
@@ -92,27 +93,46 @@ function emptyInputLogin($email, $pwd) {
     }
 }
 
+
 function loginUser($conn, $email, $pwd) {
-    $userExists = uidExist($conn, $email);
 
+    $query = "SELECT * FROM Users WHERE userEmail = ? AND userPwd = ?";
+    // Prepare the statement
+    //$pwdHashed = password_hash($pwd, PASSWORD_DEFAULT);
+    $params = array($email, $pwd);
+    $stmt = sqlsrv_prepare($conn, $query, $params);
+    // Execute the statement
+    sqlsrv_execute($stmt);
 
-    if ($userExists === false) {
-        header("location: ../login.php?error=loginwrong");
-        exit();
-    }
-
-    $pwdHashed = $userExists["userPwd"];
-    $checkPwd = password_verify($pwd, $pwdHashed);
-
-
-    if ($checkPwd === false) {
-        header("location: ../login.php?error=loginwrong");
-        exit();
-    }else if($checkPwd === true) {
-        session_start();
-        $_SESSION["id"] = $userExists["id"]; 
-        $_SESSION["userUid"] = $userExists["userUid"];
-        header("location: ../index.php");
-        exit(); 
+    // Check if the query returned any results
+    if (sqlsrv_has_rows($stmt)) {
+        // A match was found, set the session variables
+        $row = sqlsrv_fetch_array($stmt);
+        echo $row;
+        $_SESSION['userName'] = $row['userUid'];
+        $_SESSION['userEmail'] = $row['userEmail'];
+        // Redirect the user to the main page
+        header("location: ../index.php?error=loginsuccessful");
+    } else {
+        // No match was found, display an error message
+        echo 'Error';
+        // header("location: ../index.php?error=loginwrong");
+        // exit(); 
     }
 }
+
+
+
+function FormatErrors( $errors ) {
+    /* Display errors. */
+    echo "Error information: ";
+
+    foreach ( $errors as $error )
+    {
+        echo "SQLSTATE: ".$error['SQLSTATE']."";
+        echo "Code: ".$error['code']."";
+        echo "Message: ".$error['message']."";
+    }
+}
+
+
