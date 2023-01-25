@@ -27,3 +27,15 @@ sqlsrv_execute($stmt);
 $row = sqlsrv_fetch_array($stmt);
 $hashed_password = $row['userPwd'];
 echo $hashed_password;
+
+$id = $row['id'];
+$username = $row['userUid'];
+$usermail = $row['userEmail'];
+
+
+echo '</br>';
+echo $id;
+echo '</br>';
+echo $username;
+echo '</br>';
+echo $usermail;

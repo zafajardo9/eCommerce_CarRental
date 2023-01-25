@@ -26,7 +26,7 @@ session_start();
             <li><a href="#">FAQ</a></li>
             <li class="nav-btn">
                 <?php
-                if (isset($_SESSION["userEmail"])) {
+                if (isset($_SESSION['userId'])) {
                     echo "<a href='profile.php'><button>Profile</button></a>";
                     echo "<a href='logout.php'><button>Logout</button></a>";
                 }else {

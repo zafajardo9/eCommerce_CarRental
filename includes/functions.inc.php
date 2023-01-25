@@ -125,7 +125,9 @@ function loginUser($conn, $email, $pwd) {
 
             //get value
             $row = sqlsrv_fetch_array($stmt);
-            $_SESSION['userId'] = $row['userId'];
+            //start a session
+            session_start();
+            $_SESSION['userId'] = $row['id'];
             $_SESSION['userName'] = $row['userUid'];
             $_SESSION['userEmail'] = $row['userEmail'];
             // Redirect the user to the protected page
