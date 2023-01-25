@@ -34,7 +34,7 @@ include_once 'header.php';
                     if ($_GET["error"] == "emptyinput") {
                         echo "<p>Pls Input email and password</p>";
                     }
-                    else if ($_GET["error"] == "loginwrong") {
+                    else if ($_GET["error"] == "invalidlogin") {
                         echo "<p>Error log in details</p>";
                     }
                     else if ($_GET["error"] == "none") {
