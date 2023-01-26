@@ -13,15 +13,15 @@ function emptyInputSignUp($name, $email, $userName, $pwd, $pwdrepeat){
     }
 }
 
-// function invalidUid($userName) {
+function invalidUid($userName) {
 
-//     $pattern = '/^[a-zA-Z0-9._-]{3,16}$/';
-//     if (preg_match($pattern, $userName)) {
-//         return true;
-//     }else {
-//         return false;
-//     }
-// }
+    $pattern = '/^[a-zA-Z0-9._-]{3,16}$/';
+    if (preg_match($pattern, $userName)) {
+        return true;
+    }else {
+        return false;
+    }
+}
 
 function invalidEmail($email) {
 
@@ -84,6 +84,7 @@ function createUser($conn, $name, $email, $userName, $pwd) {
 
 }
 
+///////////////////////FOR LOGIN///////////////////////
 
 function emptyInputLogin($email, $pwd) {
     if (empty($email)||empty($pwd) ) {
@@ -96,45 +97,47 @@ function emptyInputLogin($email, $pwd) {
 
 function loginUser($conn, $email, $pwd) {
 
+
     $query = "SELECT * FROM Users WHERE userEmail = ?";//AND userPwd = ?
     // Prepare the statement
-    
-    $params = array($email);
-    $stmt = sqlsrv_prepare($conn, $query, $params);
+
+    $stmt = sqlsrv_prepare($conn, $query, array(&$email));
     // Execute the statement
     sqlsrv_execute($stmt);
     // Check if the query returned any results
 
     if (sqlsrv_has_rows($stmt)) {
         // A match was found, set the session variables
-        $row = sqlsrv_fetch_array($stmt);
+        $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
         $hashed_password = $row['userPwd'];
-        echo $hashed_password;
 
         //password verify function of php
         if (password_verify($pwd, $hashed_password)) {
             // Password is valid, set the session variables
-            $query = "SELECT id FROM users WHERE userEmail = ?";
-            $stmt = sqlsrv_prepare($conn, $query, array(&$email));
-            sqlsrv_execute($stmt);
-
-            $row = sqlsrv_fetch_array($stmt);
-            $hashed_password = $row['userPwd'];
-            echo $hashed_password;
-        
+            // $query = "SELECT id FROM users WHERE userEmail = ?";
+            // $params = array($email);
+            // $stmt = sqlsrv_prepare($conn, $query, $params);
+            // sqlsrv_execute($stmt);
 
             //get value
-            $row = sqlsrv_fetch_array($stmt);
+            //$row = sqlsrv_fetch_array($stmt);
             //start a session
             session_start();
+
+
             $_SESSION['userId'] = $row['id'];
             $_SESSION['userName'] = $row['userUid'];
             $_SESSION['userEmail'] = $row['userEmail'];
-            // Redirect the user to the protected page
+
+            
+            //header("location: ../index.php?error=loginsuccessful");
             header("location: ../index.php?error=loginsuccessful");
+
+            exit(); 
         } else {
             // Password is invalid, display an error message
             header("location: ../login.php?error=invalidlogin");
+            exit(); 
         }
 
     } else {
@@ -143,9 +146,7 @@ function loginUser($conn, $email, $pwd) {
         header("location: ../login.php?error=invalidlogin");
         exit(); 
     }
-    sqlsrv_close($conn);
 }
-
 
 
 function FormatErrors( $errors ) {

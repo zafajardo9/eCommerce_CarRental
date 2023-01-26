@@ -1,41 +1,30 @@
 <?php
+session_start();
 
-//ZACK\SQLEXPRESS
-$serverName = "ZACK\SQLEXPRESS";
-$connectionOptions = [
-    "Database"=>"carrental",
-    "Uid"=>"",
-    "PWD"=>""
-];
+// require_once 'includes/dbh.inc.php';
+// require_once 'includes/functions.inc.php';
+
 //http://localhost/SystemCarRental/test.php
-$email = '123@gmail.com';
-
-
-
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+$email = 'zafajardo8@gmail.com';
+$pwd = '123';
 
 $query = "SELECT * FROM Users WHERE userEmail = ?";
 // Prepare the statement
-
 $params = array($email);
-
 $stmt = sqlsrv_prepare($conn, $query, $params);
 // Execute the statement
 sqlsrv_execute($stmt);
 // Check if the query returned any results
-
 $row = sqlsrv_fetch_array($stmt);
-$hashed_password = $row['userPwd'];
-echo $hashed_password;
 
-$id = $row['id'];
-$username = $row['userUid'];
-$usermail = $row['userEmail'];
+$_SESSION['userId'] = $row['id'];
+$_SESSION['userName'] = $row['userUid'];
+$_SESSION['userEmail'] = $row['userEmail'];
+echo '</br>';
+echo $_SESSION['userId'];
+echo '</br>';
+echo $_SESSION['userName'];
+echo '</br>';
+echo $_SESSION['userEmail'];
 
 
-echo '</br>';
-echo $id;
-echo '</br>';
-echo $username;
-echo '</br>';
-echo $usermail;

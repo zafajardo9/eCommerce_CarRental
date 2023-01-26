@@ -27,8 +27,8 @@ session_start();
             <li class="nav-btn">
                 <?php
                 if (isset($_SESSION['userId'])) {
-                    echo "<a href='profile.php'><button>Profile</button></a>";
-                    echo "<a href='logout.php'><button>Logout</button></a>";
+                    echo "<a href='profile.php'><button>".$_SESSION['userName']."</button></a>";
+                    echo "<a href='includes/logout.inc.php'><button>Logout</button></a>";
                 }else {
                     echo "<a href='login.php'><button>Log In</button></a>";
                     echo "<a href='signup.php'><button>Sign Up</button></a>";
@@ -36,5 +36,9 @@ session_start();
                 ?>
             </li>
             
+
+            <?php
+            //echo $_SESSION['userName'];
+            ?>
         </ul>
     </nav>

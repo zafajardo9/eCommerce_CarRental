@@ -26,7 +26,7 @@ include_once 'header.php';
                 <span>or use your email</span>
                 <input type="email" name="email" placeholder="Email" />
                 <input type="password" name="pwd" placeholder="Password" />
-                <button type="submit" name="submit">Log In</button>
+                <button type="submit" name="login">Log In</button>
 
 
                 <?php
