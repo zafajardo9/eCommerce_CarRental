@@ -1,0 +1,39 @@
+:root {
+  --font-color: #08090A;
+  --pure-white: #fff;
+  --white: #A7A2A9;
+  --secondary: #A7A2A9;
+  --third: #575A5E;
+  --ui: #222823;
+}
+
+.form-contact-us {
+  width: 100%;
+  background-color: white;
+  height: 100vh;
+}
+.form-contact-us .form-container {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+}
+.form-contact-us .form-container form {
+  width: 50%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-contact-us .form-container form input, .form-contact-us .form-container form textarea {
+  padding: 10px;
+  width: 100%;
+  resize: none;
+  border: 1px solid var(--ui);
+  border-radius: 5px;
+}/*# sourceMappingURL=contact.css.map */

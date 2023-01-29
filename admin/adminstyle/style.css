@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Poppins&family=Roboto&display=swap");
+/* 
+font-family: 'Lato', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; 
+*/
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --font-color: #08090A;
+  --pure-white: #fff;
+  --white: #A7A2A9;
+  --secondary: #A7A2A9;
+  --third: #575A5E;
+  --ui: #222823;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.message {
+  margin-top: 10px;
+  width: 30%;
+  height: 40px;
+  background-color: rgb(255, 62, 62);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  color: var(--pure-white);
+}
+
+.car-rental-form-container {
+  background-color: var(--pure-white);
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.car-rental-form-container form {
+  background-color: var(--secondary);
+  width: 70%;
+  border-radius: 15px;
+  padding: 1rem;
+  color: var(--pure-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.car-rental-form-container form input {
+  width: 40%;
+  padding: 0.5rem;
+}/*# sourceMappingURL=style.css.map */
