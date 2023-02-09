@@ -56,9 +56,51 @@ body {
         flex-direction: column;
         align-items: center;
         gap: 10px;
+        select {
+            width: 40%;
+            padding: .5rem;
+        }
         input {
             width: 40%;
             padding: .5rem;
         }
+    }
+}
+
+
+
+.car-display {
+    margin: 2rem;
+    overflow-y: scroll;
+    .car-table {
+        width: 100%;
+        text-align: center;
+        thead {
+            padding: 1rem;
+            tr {
+                border-color: var(--third);
+                
+                th {
+                    background-color: var(--third);
+                    font-size: 1rem;
+                }
+                td {
+                    background-color: var(--white);
+                    font-size: .5rem;
+                    a {
+                        width: 100%;
+                        background-color: var(--ui);
+                    }
+                }
+            }
+            
+        }
+
+
+        .uploadedImg {
+            max-width: 50px;
+            height: auto;
+        }
+
     }
 }

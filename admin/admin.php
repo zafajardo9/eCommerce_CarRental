@@ -1,10 +1,14 @@
 <?php
 
 //@includes , require_once
+require_once '../includes/dbh.inc.php';
+
+
+
 
 if (isset($_POST['rentSubmit'])) {
 
-    require_once '../includes/dbh.inc.php';
+    
     $carNumber = $_POST['carNumber'];
     $carBrand = $_POST['carBrand'];
     $carModel = $_POST['carModel'];
@@ -13,7 +17,7 @@ if (isset($_POST['rentSubmit'])) {
     $carPrice = $_POST['carPrice'];
     $carImg = $_FILES['carImg']['name'];
     $carImg_tmpName = $_FILES['carImg']['tmp_name'];
-    $car_image_folder = '../img/storedImg'.$carImg;
+    $car_image_folder = '../storedImg/'.$carImg;
 
 
     if (empty($carNumber)|| 
@@ -39,19 +43,14 @@ if (isset($_POST['rentSubmit'])) {
         }
     }
 
+};
 
-    // if(isset($_GET['delete'])){
-    //     $id = $_GET['delete'];
-    //     mysqli_query($conn, "DELETE FROM products WHERE id = $id");
-    //     header('location:admin_page.php');
-    // };
-
-
-
-
-    
-}
-
+if(isset($_GET['delete'])){
+        
+    $id = intval($_GET['delete']);
+    sqlsrv_query($conn, "DELETE FROM Cars WHERE CarID = $id");
+    header('location:admin.php');
+};
 
 
 
@@ -67,6 +66,7 @@ if (isset($_POST['rentSubmit'])) {
 
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="adminstyle/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -81,7 +81,19 @@ if (isset($_POST['rentSubmit'])) {
             <form action="<?php $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">    
                 <h2>Add a Car for Rent</h2>
                 <input type="number" name="carNumber" placeholder="Car Plate Number">
-                <input type="text" name="carBrand" placeholder="Car Brand">
+                    <label for="color">Car Brand</label>
+                        <select name="carBrand" id="car">
+                            <option value="">Car Brand</option>
+                            <option value="BMW">BMW</option>
+                            <option value="Chevrolet">Chevrolet</option>
+                            <option value="Ford">Ford</option>
+                            <option value="Honda">Honda</option>
+                            <option value="Hyundai">Hyundai</option>
+                            <option value="Kia">Kia</option>
+                            <option value="Mazda">Mazda</option>
+                            <option value="Toyota">Toyota</option>
+                        </select>
+                <!-- <input type="text" name="carBrand" placeholder="Car Brand"> -->
                 <input type="text" name="carModel" placeholder="Car Model">
                 <input type="text" name="carStatus" placeholder="Status">
                 <input type="text" name="carType" placeholder="Car Transmission Type">
@@ -102,6 +114,69 @@ if (isset($_POST['rentSubmit'])) {
 
                 
             </form>
+        </div>
+
+
+<?php
+//include_once '../includes/dbh.inc.php';
+//SELECT
+$show = "SELECT * FROM Cars";
+$stmt= sqlsrv_query($conn, $show);
+sqlsrv_execute($stmt);
+?>
+
+
+        <div class="car-display">
+            <table class="car-table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Plate Number</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Status</th>
+                        <th>Transmission Type</th>
+                        <th>Rent Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <?php
+                        
+
+                        
+
+                    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+
+                ?>
+
+                    <tr>
+                        <td>
+                            <img src="../storedImg/<?php echo $row['CarImage']; ?>" class="uploadedImg">
+                        </td>
+                        <td><?php echo $row['CarNumber']; ?></td>
+                        <td><?php echo $row['CarBrand']; ?></td>
+                        <td><?php echo $row['CarModel']; ?></td>
+                        <td><?php echo $row['CarStatus']; ?></td>
+                        <td><?php echo $row['TransmissionType']; ?></td>
+                        <td>₱<?php echo $row['RentPrice']; ?></td>
+                        <td>
+                            <a href="admin_update.php?edit=<?php echo $row['CarID']; ?>"> <i class="fa-solid fa-pen-to-square"></i>Edit</a>
+                            <a href="admin.php?delete=<?php echo $row['CarID']; ?>"> <i class="fa-solid fa-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+                <?php
+                }
+                // sqlsrv_free_stmt( $getCars);
+                // sqlsrv_close( $conn);
+                ?>
+
+                
+
+
+            </table>
+
+
         </div>
     </section>
     

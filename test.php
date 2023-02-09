@@ -1,30 +1,38 @@
 <?php
-session_start();
+//session_start();
 
-// require_once 'includes/dbh.inc.php';
+require_once 'includes/dbh.inc.php';
 // require_once 'includes/functions.inc.php';
 
 //http://localhost/SystemCarRental/test.php
-$email = 'zafajardo8@gmail.com';
-$pwd = '123';
 
-$query = "SELECT * FROM Users WHERE userEmail = ?";
+
+$query = "SELECT * FROM Cars";
 // Prepare the statement
-$params = array($email);
-$stmt = sqlsrv_prepare($conn, $query, $params);
+$stmt = sqlsrv_prepare($conn, $query);
 // Execute the statement
 sqlsrv_execute($stmt);
 // Check if the query returned any results
-$row = sqlsrv_fetch_array($stmt);
 
-$_SESSION['userId'] = $row['id'];
-$_SESSION['userName'] = $row['userUid'];
-$_SESSION['userEmail'] = $row['userEmail'];
-echo '</br>';
-echo $_SESSION['userId'];
-echo '</br>';
-echo $_SESSION['userName'];
-echo '</br>';
-echo $_SESSION['userEmail'];
+
+while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+    echo '</br>';
+    echo $row['CarID'];
+    echo '</br>';
+    echo $row['CarNumber'];
+    echo '</br>';
+    echo $row['CarBrand'];
+    echo '</br>';
+    echo $row['CarModel'];
+    echo '</br>';
+    echo $row['CarStatus'];
+    echo '</br>';
+    echo $row['TransmissionType'];
+    echo '</br>';
+    echo $row['RentPrice'];
+    echo '</br>';
+    echo $row['CarImage'];
+}
+
 
 

@@ -53,7 +53,42 @@ body {
   align-items: center;
   gap: 10px;
 }
+.car-rental-form-container form select {
+  width: 40%;
+  padding: 0.5rem;
+}
 .car-rental-form-container form input {
   width: 40%;
   padding: 0.5rem;
+}
+
+.car-display {
+  margin: 2rem;
+  overflow-y: scroll;
+}
+.car-display .car-table {
+  width: 100%;
+  text-align: center;
+}
+.car-display .car-table thead {
+  padding: 1rem;
+}
+.car-display .car-table thead tr {
+  border-color: var(--third);
+}
+.car-display .car-table thead tr th {
+  background-color: var(--third);
+  font-size: 1rem;
+}
+.car-display .car-table thead tr td {
+  background-color: var(--white);
+  font-size: 0.5rem;
+}
+.car-display .car-table thead tr td a {
+  width: 100%;
+  background-color: var(--ui);
+}
+.car-display .car-table .uploadedImg {
+  max-width: 50px;
+  height: auto;
 }/*# sourceMappingURL=style.css.map */
