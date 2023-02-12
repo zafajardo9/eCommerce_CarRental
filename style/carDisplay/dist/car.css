@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Poppins&family=Roboto&display=swap");
+/* 
+font-family: 'Lato', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; 
+*/
+:root {
+  --font-color: #08090A;
+  --pure-white: #fff;
+  --white: #A7A2A9;
+  --secondary: #A7A2A9;
+  --third: #575A5E;
+  --ui: #222823;
+}
+
+h1, h2, h3, h4, i {
+  background-color: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  background-color: var(--pure-white);
+}
+
+section {
+  width: 100%;
+  margin: auto;
+  background-color: var(--pure-white);
+}
+
+.block-img {
+  margin: auto;
+  width: 80%;
+  height: 500px;
+  background: linear-gradient(to top, #26262aba, #1f0f2a8e), url(../../img/car1.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.block-img h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.container .card {
+  width: 80%;
+  margin-top: 10px;
+  background-color: var(--ui);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+.container .card .card-image {
+  padding: 10px;
+}
+.container .card .card-image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.container .card .card-details {
+  width: 80%;
+  display: flex;
+  padding: 30px;
+}
+.container .card .card-details .card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.container .card .card-btn {
+  height: 100%;
+  flex-direction: column;
+  gap: 20px;
+  display: flex;
+}
+.container .card .btn-car-cart {
+  width: 50px;
+  height: 50px;
+  background-color: var(--secondary);
+  border-radius: 50%;
+}

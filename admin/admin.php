@@ -1,4 +1,9 @@
 <?php
+include_once '../header.php';
+?>
+
+
+<?php
 
 //@includes , require_once
 require_once '../includes/dbh.inc.php';
@@ -9,12 +14,11 @@ require_once '../includes/dbh.inc.php';
 if (isset($_POST['rentSubmit'])) {
 
     
-    $carNumber = $_POST['carNumber'];
-    $carBrand = $_POST['carBrand'];
-    $carModel = $_POST['carModel'];
-    $carStatus = $_POST['carStatus'];
-    $carType = $_POST['carType'];
-    $carPrice = $_POST['carPrice'];
+    $carNumber = $_POST['carNumber']; //ok
+    $carBrand = $_POST['carBrand']; //ok
+    $carModel = $_POST['carModel']; //ok
+    $carType = $_POST['carType']; //ok
+    $carPrice = $_POST['carPrice']; //ok 
     $carImg = $_FILES['carImg']['name'];
     $carImg_tmpName = $_FILES['carImg']['tmp_name'];
     $car_image_folder = '../storedImg/'.$carImg;
@@ -22,17 +26,16 @@ if (isset($_POST['rentSubmit'])) {
 
     if (empty($carNumber)|| 
         empty($carBrand)|| 
-        empty($carModel)|| 
-        empty($carStatus)|| 
+        empty($carModel)||
         empty($carType)|| 
         empty($carPrice)|| 
         empty($carImg))     {
             $message[] = 'Please Fill all';
     } else {
         
-        $sql = "INSERT INTO Cars(CarNumber, CarBrand, CarModel, CarStatus, TransmissionType, RentPrice, CarImage)
-        VALUES(?,?,?,?,?,?,?)";
-        $params = array($carNumber, $carBrand, $carModel, $carStatus, $carType, $carPrice, $carImg);
+        $sql = "INSERT INTO Car(Registration_Number, Model, Brand, TransmissionType, RentPrice, CarImage)
+        VALUES(?,?,?,?,?,?)";
+        $params = array($carNumber, $carModel, $carBrand, $carType, $carPrice, $carImg);
         $getResults= sqlsrv_query($conn, $sql, $params);
         if ($getResults) {
             move_uploaded_file($carImg_tmpName, $car_image_folder); 
@@ -48,7 +51,7 @@ if (isset($_POST['rentSubmit'])) {
 if(isset($_GET['delete'])){
         
     $id = intval($_GET['delete']);
-    sqlsrv_query($conn, "DELETE FROM Cars WHERE CarID = $id");
+    sqlsrv_query($conn, "DELETE FROM Car WHERE CarID = $id");
     header('location:admin.php');
 };
 
@@ -81,9 +84,9 @@ if(isset($_GET['delete'])){
             <form action="<?php $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">    
                 <h2>Add a Car for Rent</h2>
                 <input type="number" name="carNumber" placeholder="Car Plate Number">
-                    <label for="color">Car Brand</label>
+                    <label for="Brand">Car Brand</label>
                         <select name="carBrand" id="car">
-                            <option value="">Car Brand</option>
+                            <option value="None">Car Brand</option>
                             <option value="BMW">BMW</option>
                             <option value="Chevrolet">Chevrolet</option>
                             <option value="Ford">Ford</option>
@@ -95,7 +98,6 @@ if(isset($_GET['delete'])){
                         </select>
                 <!-- <input type="text" name="carBrand" placeholder="Car Brand"> -->
                 <input type="text" name="carModel" placeholder="Car Model">
-                <input type="text" name="carStatus" placeholder="Status">
                 <input type="text" name="carType" placeholder="Car Transmission Type">
                 <input type="number" name="carPrice" placeholder="Renting Price">
 
@@ -120,7 +122,7 @@ if(isset($_GET['delete'])){
 <?php
 //include_once '../includes/dbh.inc.php';
 //SELECT
-$show = "SELECT * FROM Cars";
+$show = "SELECT * FROM Car";
 $stmt= sqlsrv_query($conn, $show);
 sqlsrv_execute($stmt);
 ?>
@@ -134,7 +136,6 @@ sqlsrv_execute($stmt);
                         <th>Plate Number</th>
                         <th>Brand</th>
                         <th>Model</th>
-                        <th>Status</th>
                         <th>Transmission Type</th>
                         <th>Rent Price</th>
                         <th>Action</th>
@@ -154,15 +155,14 @@ sqlsrv_execute($stmt);
                         <td>
                             <img src="../storedImg/<?php echo $row['CarImage']; ?>" class="uploadedImg">
                         </td>
-                        <td><?php echo $row['CarNumber']; ?></td>
-                        <td><?php echo $row['CarBrand']; ?></td>
-                        <td><?php echo $row['CarModel']; ?></td>
-                        <td><?php echo $row['CarStatus']; ?></td>
+                        <td><?php echo $row['Registration_Number']; ?></td>
+                        <td><?php echo $row['Brand']; ?></td>
+                        <td><?php echo $row['Model']; ?></td>
                         <td><?php echo $row['TransmissionType']; ?></td>
                         <td>₱<?php echo $row['RentPrice']; ?></td>
                         <td>
-                            <a href="admin_update.php?edit=<?php echo $row['CarID']; ?>"> <i class="fa-solid fa-pen-to-square"></i>Edit</a>
-                            <a href="admin.php?delete=<?php echo $row['CarID']; ?>"> <i class="fa-solid fa-trash"></i>Delete</a>
+                            <a class="btn-admin" href="admin_update.php?edit=<?php echo $row['CarID']; ?>"> <i class="fa-solid fa-pen-to-square"></i>Edit</a>
+                            <a class="btn-admin delete" href="admin.php?delete=<?php echo $row['CarID']; ?>"> <i class="fa-solid fa-trash"></i>Delete</a>
                         </td>
                     </tr>
                 <?php

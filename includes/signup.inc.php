@@ -5,6 +5,7 @@ if(isset($_POST["submit"])) {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $userName = $_POST["userName"];
+    $phoneNumber = $_POST["phonenumber"];
     $pwd = $_POST["pwd"];
     $pwdrepeat = $_POST["repeatpwd"];
 
@@ -12,7 +13,8 @@ if(isset($_POST["submit"])) {
     require_once 'functions.inc.php';
 
 
-    if (emptyInputSignUp($name, $email, $userName, $pwd, $pwdrepeat) !== false) {
+
+    if (emptyInputSignUp($name, $email, $userName,$phoneNumber, $pwd, $pwdrepeat) !== false) {
         header("location: ../signup.php?error=emptyinput");
         exit();
     }
@@ -28,7 +30,8 @@ if(isset($_POST["submit"])) {
     if (pwdMatch($pwd, $pwdrepeat) !== false) {
         header("location: ../signup.php?error=passwordsdontmatch");
         exit();
-    }   
+    }  
+
 
     if (uidExist($conn, $userName) !== false) {
         header("location: ../signup.php?error=usernametaken");
@@ -42,7 +45,7 @@ if(isset($_POST["submit"])) {
 
 
 
-    createUser($conn, $name, $email, $userName, $pwd);
+    createUser($conn, $name, $userName, $email, $phoneNumber, $pwd);
 
 
 } else {

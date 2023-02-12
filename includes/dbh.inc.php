@@ -3,7 +3,7 @@
 //ZACK\SQLEXPRESS
 $serverName = "ZACK\SQLEXPRESS";
 $connectionOptions = [
-    "Database"=>"carrental",
+    "Database"=>"RentCar2",
     "Uid"=>"",
     "PWD"=>""
 ];

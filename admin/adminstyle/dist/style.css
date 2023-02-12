@@ -27,7 +27,7 @@ body {
   margin-top: 10px;
   width: 30%;
   height: 40px;
-  background-color: rgb(255, 62, 62);
+  background-color: #ff3e3e;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -61,9 +61,6 @@ body {
   width: 40%;
   padding: 0.5rem;
 }
-.car-rental-form-container form a {
-  width: 40%;
-}
 
 .car-display {
   margin: 2rem;
@@ -87,32 +84,17 @@ body {
   background-color: var(--white);
   font-size: 0.5rem;
 }
-.car-display .car-table .uploadedImg {
-  max-width: 150px;
-  height: auto;
-}
-
-.btn-admin {
+.car-display .car-table thead tr td .btn-admin {
   text-decoration: none;
   background-color: var(--secondary);
   padding: 10px;
   color: var(--ui);
   width: 100%;
 }
-
-.btn {
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  font-size: 1rem;
-  text-decoration: none;
-  background-color: var(--ui);
-  padding: 10px;
-  color: var(--pure-white);
-}
-.btn .fa-solid {
-  color: #fff;
-}
-
-.delete {
+.car-display .car-table thead tr td .delete {
   background-color: #ff172b;
-}/*# sourceMappingURL=style.css.map */
+}
+.car-display .car-table .uploadedImg {
+  max-width: 150px;
+  height: auto;
+}

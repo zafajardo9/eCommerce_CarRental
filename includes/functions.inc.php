@@ -1,8 +1,9 @@
 <?php
 
-function emptyInputSignUp($name, $email, $userName, $pwd, $pwdrepeat){
+function emptyInputSignUp($name, $email, $userName,$phoneNumber,$pwd, $pwdrepeat){
 
     if (empty($name) 
+        || empty($phoneNumber)
         || empty($email) 
         || empty($userName) 
         || empty($pwd) 
@@ -12,6 +13,8 @@ function emptyInputSignUp($name, $email, $userName, $pwd, $pwdrepeat){
         return false;
     }
 }
+
+
 
 function invalidUid($userName) {
 
@@ -43,7 +46,7 @@ function pwdMatch($pwd, $pwdrepeat) {
 
 function uidExist($conn, $email) {
 
-    $tsql = "SELECT COUNT(*) FROM Users WHERE userEmail = ?";
+    $tsql = "SELECT COUNT(*) FROM Customer WHERE Email = ?";
     $params = array($email);
     $stmt = sqlsrv_query($conn, $tsql, $params);
     if ($stmt === false) {
@@ -59,16 +62,17 @@ function uidExist($conn, $email) {
 
 }
 
-function createUser($conn, $name, $email, $userName, $pwd) {
+function createUser($conn, $name, $userName, $email, $phoneNumber, $pwd) {
 
 
-    $tsql= "INSERT INTO Users (userName,userEmail,userUid,userpwd) VALUES (?,?,?,?);";
+    $tsql= "INSERT INTO Customer (UserName, FullName, Email, PhoneNumber, [Password]) VALUES (?,?,?,?,?);";
     
-    $hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
     //hashing of password
-    
-    $params = array($name, $email, $userName, $hashedpwd);
-    $getResults= sqlsrv_query($conn, $tsql, $params);
+    $hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+    $params = array(&$name, &$userName, &$email, &$phoneNumber, &$hashedpwd);
+
+    $getResults = sqlsrv_query($conn, $tsql, $params);
     $rowsAffected = sqlsrv_rows_affected($getResults);
     //Checker
     if ($getResults == FALSE or $rowsAffected == FALSE) {
@@ -76,10 +80,7 @@ function createUser($conn, $name, $email, $userName, $pwd) {
         die(FormatErrors(sqlsrv_errors()));
     }
     
-    echo ($rowsAffected. " row(s) inserted: " . PHP_EOL);
-    //sqlsrv_free_stmt($getResults);
-
-    header("location: ../signup.php?error=none");
+    //header("location: ../signup.php?error=none");
     exit();
 
 }
@@ -97,8 +98,7 @@ function emptyInputLogin($email, $pwd) {
 
 function loginUser($conn, $email, $pwd) {
 
-
-    $query = "SELECT * FROM Users WHERE userEmail = ?";//AND userPwd = ?
+    $query = "SELECT * FROM Customer WHERE Email = ?";//AND userPwd = ?
     // Prepare the statement
 
     $stmt = sqlsrv_prepare($conn, $query, array(&$email));
@@ -109,7 +109,7 @@ function loginUser($conn, $email, $pwd) {
     if (sqlsrv_has_rows($stmt)) {
         // A match was found, set the session variables
         $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
-        $hashed_password = $row['userPwd'];
+        $hashed_password = $row['Password'];
 
         //password verify function of php
         if (password_verify($pwd, $hashed_password)) {
@@ -125,9 +125,9 @@ function loginUser($conn, $email, $pwd) {
             session_start();
 
 
-            $_SESSION['userId'] = $row['id'];
-            $_SESSION['userName'] = $row['userUid'];
-            $_SESSION['userEmail'] = $row['userEmail'];
+            $_SESSION['userId'] = $row['CustomerID'];
+            $_SESSION['userName'] = $row['UserName'];
+            $_SESSION['userEmail'] = $row['Email'];
 
             
             //header("location: ../index.php?error=loginsuccessful");

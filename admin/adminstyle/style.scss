@@ -64,6 +64,9 @@ body {
             width: 40%;
             padding: .5rem;
         }
+        a {
+            width: 40%;
+        }
     }
 }
 
@@ -87,10 +90,7 @@ body {
                 td {
                     background-color: var(--white);
                     font-size: .5rem;
-                    a {
-                        width: 100%;
-                        background-color: var(--ui);
-                    }
+
                 }
             }
             
@@ -98,9 +98,36 @@ body {
 
 
         .uploadedImg {
-            max-width: 50px;
+            max-width: 150px;
             height: auto;
         }
 
     }
+}
+
+.btn-admin {
+    text-decoration: none;
+    background-color: var(--secondary);
+    padding: 10px;
+    color: var(--ui);
+    width: 100%;
+}
+
+
+.btn {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: none;
+    background-color: var(--ui);
+    padding: 10px;
+    color: var(--pure-white);
+
+    .fa-solid {
+        color: #fff;
+    }
+}
+
+.delete {
+    background-color: #ff172b;
 }

@@ -15,15 +15,21 @@ include_once 'header.php';
                     </div>
                 <span>or use your email for registration</span>
                 <input type="text" name="name" placeholder="Name" />
-                <input type="email" name="email" placeholder="Email" />
                 <input type="text" name="userName" placeholder="UserName" />
+                <input type="email" name="email" placeholder="Email" />
+                
+                <input type="text" name="phonenumber" placeholder="Phone Number">
                 <input type="password"  name="pwd" placeholder="Password" />
                 <input type="password"  name="repeatpwd" placeholder="Repeat Password" />
+                
                 <button type="submit" name="submit">Sign Up</button>
                 <?php
                 if(isset($_GET["error"])) {
                     if ($_GET["error"] == "emptyinput") {
                         echo "<p>Fill in all fields</p>";
+                    }
+                    if ($_GET["error"] == "emptynumber") {
+                        echo "<p>Input your Phone Number</p>";
                     }
                     else if ($_GET["error"] == "emptyuid") {
                         echo "<p>Invalid User Name</p>";

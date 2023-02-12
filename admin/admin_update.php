@@ -6,30 +6,29 @@ $id = $_GET['edit'];
 
 if(isset($_POST['update_product'])){
 
-   $carNumber = $_POST['carNumber'];
-   $carBrand = $_POST['carBrand'];
-   $carModel = $_POST['carModel'];
-   $carStatus = $_POST['carStatus'];
-   $carType = $_POST['carType'];
-   $carPrice = $_POST['carPrice'];
+
+   $carNumber = $_POST['carNumber']; //ok
+   $carBrand = $_POST['carBrand']; //ok
+   $carModel = $_POST['carModel']; //ok
+   $carType = $_POST['carType']; //ok
+   $carPrice = $_POST['carPrice']; //ok 
    $carImg = $_FILES['carImg']['name'];
    $carImg_tmpName = $_FILES['carImg']['tmp_name'];
    $car_image_folder = '../storedImg/'.$carImg;
 
+
    if(empty($carNumber)|| 
       empty($carBrand)|| 
-      empty($carModel)|| 
-      empty($carStatus)|| 
+      empty($carModel)||
       empty($carType)|| 
       empty($carPrice)|| 
       empty($carImg)) {
       $message[] = 'please fill out all!';    
    }else{
 
-      $update_data = "UPDATE Cars SET CarNumber='$carNumber', 
-                  CarBrand='$carBrand',
-                  CarModel='$carModel',
-                  CarStatus='$carStatus',
+      $update_data = "UPDATE Car SET Registration_Number='$carNumber', 
+                  Brand='$carBrand',
+                  Model='$carModel',
                   TransmissionType='$carType',
                   RentPrice='$carPrice', 
                   CarImage='$carImg'  
@@ -76,7 +75,7 @@ if(isset($_POST['update_product'])){
 
       <?php
          
-         $select = sqlsrv_query($conn, "SELECT * FROM Cars WHERE CarID = '$id'");
+         $select = sqlsrv_query($conn, "SELECT * FROM Car WHERE CarID = '$id'");
          while($row = sqlsrv_fetch_array($select)){
 
       ?>
@@ -84,8 +83,8 @@ if(isset($_POST['update_product'])){
       <form action="" method="post" enctype="multipart/form-data">
       
          <h2>Edit Details</h2>
-         <input type="number" name="carNumber" placeholder="Car Plate Number" value="<?php echo $row['CarNumber']; ?>">
-         <label for="color">Car Brand</label>
+         <input type="number" name="carNumber" placeholder="Car Plate Number" value="<?php echo $row['Registration_Number']; ?>">
+         <label for="Brand">Car Brand</label>
                            <select name="carBrand" id="car">
                               <option value="">Car Brand</option>
                               <option value="BMW">BMW</option>
@@ -98,8 +97,7 @@ if(isset($_POST['update_product'])){
                               <option value="Toyota">Toyota</option>
                            </select>
                   <!-- <input type="text" name="carBrand" placeholder="Car Brand"> -->
-         <input type="text" name="carModel" placeholder="Car Model" value="<?php echo $row['CarModel']; ?>">
-         <input type="text" name="carStatus" placeholder="Status" value="<?php echo $row['CarStatus']; ?>">
+         <input type="text" name="carModel" placeholder="Car Model" value="<?php echo $row['Model']; ?>">
          <input type="text" name="carType" placeholder="Car Transmission Type" value="<?php echo $row['TransmissionType']; ?>">
          <input type="number" name="carPrice" placeholder="Renting Price" value="<?php echo $row['RentPrice']; ?>">
 
@@ -108,8 +106,8 @@ if(isset($_POST['update_product'])){
 
 
 
-         <input type="submit" value="Update Product" name="update_product" class="btn">
-         <a href="admin.php" class="btn">go back!</a>
+         <input class="btn" type="submit" value="Update Product" name="update_product">
+         <a href="admin.php" class="btn"><i class="fa-solid fa-backward"></i>&nbsp;go back!</a>
       </form>
       
 
