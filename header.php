@@ -29,12 +29,15 @@ session_start();
             <li><a href="#">Services</a></li>
             <li><a href="contactus.php">Need Help?</a></li>
             <li class="nav-btn">
+                
                 <?php
-                if (isset($_SESSION['userId'])) {
+                if (isset($_SESSION['userId']) ) {
+
                     echo "<a href='profile.php'><button>".$_SESSION['userName']."</button></a>";
                     echo "<a href='includes/logout.inc.php'><button>Logout</button></a>";
                 }else {
-                    echo "<a href='login.php'><button>Log In</button></a>";
+
+                    echo "<a href='login.php'><button>Log In</button><div class='notif'></div></a>";
                     echo "<a href='signup.php'><button>Sign Up</button></a>";
                 }
                 ?>

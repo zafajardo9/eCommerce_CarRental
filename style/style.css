@@ -56,6 +56,19 @@ nav ul {
 }
 nav ul .nav-btn a {
   margin: 5px;
+  position: relative;
+}
+nav ul .nav-btn .notif {
+  position: absolute;
+  color: var(--pure-white);
+  background-color: #ff1900;
+  text-align: center;
+  top: -100%;
+  right: -10%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  z-index: 999;
 }
 nav ul a {
   color: var(--font-color);
@@ -219,6 +232,101 @@ nav.scrolled {
   margin-bottom: 10px;
 }
 .form .form-container .right-container .right button {
+  background-color: var(--secondary);
+  color: var(--font-color);
+}
+
+.booking-container {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--pure-white);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.booking-container .booking-form-container {
+  padding: 2rem;
+  color: var(--ui);
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.booking-container .booking-form-container h2 {
+  text-align: center;
+}
+.booking-container .booking-form-container .card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.booking-container .booking-form-container .card {
+  width: 100%;
+  margin-top: 10px;
+  background-color: var(--ui);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+.booking-container .booking-form-container .card .card-image {
+  padding: 10px;
+}
+.booking-container .booking-form-container .card .card-image img {
+  width: 200px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px;
+}
+.booking-container .booking-form-container .card .card-details {
+  width: 80%;
+  display: flex;
+  padding: 30px;
+  color: var(--pure-white);
+}
+.booking-container .booking-form-container .card .card-details .card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.booking-container .booking-form-container .card .card-btn {
+  height: 100%;
+  flex-direction: column;
+  gap: 20px;
+  display: flex;
+}
+.booking-container .booking-form-container .card .btn-car-cart {
+  width: 50px;
+  height: 50px;
+  background-color: var(--secondary);
+  border-radius: 50%;
+}
+.booking-container .billing-location-container {
+  background-color: var(--ui);
+  width: 40%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.booking-container .billing-location-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 80%;
+}
+.booking-container .billing-location-container form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--pure-white);
+}
+.booking-container .billing-location-container .billing-btn {
   background-color: var(--secondary);
   color: var(--font-color);
 }/*# sourceMappingURL=style.css.map */

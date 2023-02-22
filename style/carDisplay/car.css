@@ -88,8 +88,10 @@ section {
 }
 .container .card .card-btn {
   height: 100%;
-  flex-direction: column;
+}
+.container .card .card-btn form {
   gap: 20px;
+  flex-direction: column;
   display: flex;
 }
 .container .card .btn-car-cart {

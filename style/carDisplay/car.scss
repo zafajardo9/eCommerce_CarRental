@@ -93,9 +93,13 @@ section {
 
         .card-btn {
             height: 100%;
-            flex-direction: column;
-            gap: 20px;
-            display: flex;
+            
+            form {
+                gap: 20px;
+                flex-direction: column;
+                display: flex;
+            }
+            
         }
 
         .btn-car-cart {

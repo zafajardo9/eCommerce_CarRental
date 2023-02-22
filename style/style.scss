@@ -59,6 +59,21 @@ nav {
         .nav-btn {
             a{
                 margin: 5px;
+                position: relative;
+            }
+            //To be move
+            .notif {
+                position: absolute;
+                color: var(--pure-white);
+                background-color: #ff1900;
+                text-align: center;
+                top: -100%;
+                right: -10%;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                z-index: 999;
+
             }
             
         }
@@ -271,4 +286,118 @@ nav.scrolled {
         }
     }
     
+}
+
+
+// BOOKING PART================================
+
+.booking-container {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--pure-white);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    .booking-form-container {
+        padding: 2rem;
+        color: var(--ui);
+        width: 60%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        h2 {
+        text-align: center;
+        }
+        .card-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+        }
+        .card {
+            width: 100%;
+            margin-top: 10px;
+            background-color: var(--ui);
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+    
+            .card-image {
+                padding: 10px;
+                
+                img {
+                    width: 200px;
+                    height: 200px;
+                    object-fit: cover;
+                    border-radius: 15px;
+                }
+            }
+            .card-details {
+                width: 80%;
+                display: flex;
+                padding: 30px;
+                color: var(--pure-white);
+                .card-text {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+    
+                }
+            }
+    
+            .card-btn {
+                height: 100%;
+                flex-direction: column;
+                gap: 20px;
+                display: flex;
+            }
+    
+            .btn-car-cart {
+                width: 50px;
+                height: 50px;
+                background-color: var(--secondary);
+                border-radius: 50%;
+    
+            }
+    
+        }
+
+
+
+    }
+    .billing-location-container {
+        background-color: var(--ui);
+        width: 40%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width:80%;
+
+            input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid var(--pure-white);
+            }
+        }
+        
+
+
+        .billing-btn {
+            background-color: var(--secondary);
+            color: var(--font-color);
+        }
+    }
 }

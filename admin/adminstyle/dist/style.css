@@ -19,6 +19,10 @@ font-family: 'Roboto', sans-serif;
   --ui: #222823;
 }
 
+nav {
+  background-color: var(--pure-white);
+}
+
 body {
   font-family: "Montserrat", sans-serif;
 }
@@ -61,6 +65,9 @@ body {
   width: 40%;
   padding: 0.5rem;
 }
+.car-rental-form-container form a {
+  width: 40%;
+}
 
 .car-display {
   margin: 2rem;
@@ -84,17 +91,32 @@ body {
   background-color: var(--white);
   font-size: 0.5rem;
 }
-.car-display .car-table thead tr td .btn-admin {
+.car-display .car-table .uploadedImg {
+  max-width: 150px;
+  height: auto;
+}
+
+.btn-admin {
   text-decoration: none;
   background-color: var(--secondary);
   padding: 10px;
   color: var(--ui);
   width: 100%;
 }
-.car-display .car-table thead tr td .delete {
-  background-color: #ff172b;
+
+.btn {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  font-size: 1rem;
+  text-decoration: none;
+  background-color: var(--ui);
+  padding: 10px;
+  color: var(--pure-white);
 }
-.car-display .car-table .uploadedImg {
-  max-width: 150px;
-  height: auto;
+.btn .fa-solid {
+  color: #fff;
+}
+
+.delete {
+  background-color: #ff172b;
 }
