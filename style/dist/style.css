@@ -47,6 +47,17 @@ nav {
   top: 0;
   left: 0;
 }
+nav .navLogo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--font-color);
+}
+nav .navLogo a img {
+  width: 100px;
+  filter: brightness(0);
+  height: auto;
+}
 nav ul {
   display: flex;
   width: 50%;

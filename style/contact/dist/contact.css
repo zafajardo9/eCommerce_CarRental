@@ -17,13 +17,13 @@
 .form-contact-us .form-container {
   width: 100%;
   padding: 20px;
-  border: 1px solid rgba(87, 90, 94, 0.1960784314);
+  border: 1px solid #575a5e32;
   display: flex;
   justify-content: center;
 }
 .form-contact-us .form-container form {
   padding: 20px;
-  background-color: rgba(87, 90, 94, 0.1960784314);
+  background-color: #575a5e32;
   display: flex;
   gap: 1rem;
   flex-direction: column;
@@ -45,4 +45,4 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-}/*# sourceMappingURL=contact.css.map */
+}

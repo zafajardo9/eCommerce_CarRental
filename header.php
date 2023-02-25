@@ -20,7 +20,10 @@ session_start();
 
     <nav>
         <div class="navLogo">
-            <h1>RoadTrip</h1>
+            <a href="index.php">
+                <img src="img/logo/LOGO-Transparent-newvector.png" alt="" >
+                <h1>RoadTrip</h1>
+            </a>
         </div>
 
         <ul>
