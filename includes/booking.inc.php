@@ -17,9 +17,7 @@
             // Convert difference from seconds to days
             $differenceindays = abs($difference / (60 * 60 * 24)); //value ng days
 
-            //$_POST['rentprice'];
-
-            $totalAmount = $differenceindays *  $_POST['rentprice']; // gagawan pa ng computation
+            $totalAmount = $differenceindays *  $_POST['rentprice']; 
 
             
 

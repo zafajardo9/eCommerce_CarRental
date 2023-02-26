@@ -1,0 +1,76 @@
+
+CREATE DATABASE RentCar2; 
+
+CREATE TABLE Customer(
+    CustomerID INT NOT NULL
+		CONSTRAINT PK_CustomerID PRIMARY KEY IDENTITY(1,1),
+    UserName VARCHAR(255) NOT NULL,
+    FullName VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    PhoneNumber VARCHAR(255) NOT NULL,
+    [Password] VARCHAR(125) NOT NULL,
+);
+
+CREATE TABLE [Location](
+    LocationID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    LocationName VARCHAR(255) NOT NULL,
+    Street VARCHAR(255) NOT NULL,
+    City VARCHAR(255) NOT NULL,
+    ZipCode INT NOT NULL
+);
+
+
+CREATE TABLE Car(
+    CarID INT NOT NULL
+		CONSTRAINT PK_CarID PRIMARY KEY IDENTITY(1,1),
+    Registration_Number BIGINT NOT NULL,
+    Model VARCHAR(255) NOT NULL,
+    Brand VARCHAR(255) NOT NULL,
+    CarImage VARCHAR(255) NOT NULL,
+    RentPrice DECIMAL(10,2) NOT NULL,
+    TransmissionType VARCHAR(255) NOT NULL,
+
+);
+
+CREATE TABLE Booking(
+    BookingID INT NOT NULL
+		CONSTRAINT PK_BookingID PRIMARY KEY IDENTITY(1,1),
+    FromDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
+    CustomerID INT NOT NULL,
+    CarID INT NOT NULL,
+    [Status] VARCHAR(255) NOT NULL,
+    LocationID INT NOT NULL,
+
+	FOREIGN KEY(CustomerID)
+		REFERENCES [Customer] (CustomerID),
+	FOREIGN KEY(CarID)
+		REFERENCES [Car] (CarID),
+	FOREIGN KEY(LocationID)
+		REFERENCES [Location] (LocationID),
+);
+
+
+CREATE TABLE [Admin](
+    AdminID INT NOT NULL
+		CONSTRAINT PK_AdminID PRIMARY KEY IDENTITY(1,1),
+    UserName VARCHAR(255) NOT NULL,
+	Password VARCHAR(255) NOT NULL,
+    CarID INT NOT NULL,
+	FOREIGN KEY(CarID)
+		REFERENCES [Car] (CarID),
+);
+
+
+CREATE TABLE Billing(
+    BillingID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    BillDate DATE NOT NULL,
+    BillStatus INT NOT NULL,
+    TotalAmount DECIMAL(10,2) NOT NULL,
+    BookingID INT NOT NULL,
+
+	FOREIGN KEY(BookingID)
+		REFERENCES [Booking] (BookingID),
+);
+
+
