@@ -48,7 +48,7 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS
+**Client:** React, Redux, TailwindCSS, SCSS
 
 **Server:** Apache
 
@@ -86,6 +86,27 @@ if($conn == false){
 }
 ?>
 ```
+
+```php
+
+function createUser($conn, $name, $userName, $email, $phoneNumber, $pwd) {
+
+    $tsql= "INSERT INTO Customer (UserName, FullName, Email, PhoneNumber, [Password]) VALUES (?,?,?,?,?);";
+    //hashing of password
+    $hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
+    $params = array(&$userName, &$name, &$email, &$phoneNumber, &$hashedpwd);
+    $getResults = sqlsrv_query($conn, $tsql, $params);
+    $rowsAffected = sqlsrv_rows_affected($getResults);
+    //Checker
+    if ($getResults == FALSE or $rowsAffected == FALSE) {
+    //header
+        die(FormatErrors(sqlsrv_errors()));
+    }
+    header("location: ../signup.php?error=none");
+    exit();
+}
+```
+
 
 
 ## Authors
