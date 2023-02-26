@@ -7,6 +7,7 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="img/logo/LOGO1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css" type="text/css">
     <link rel="stylesheet" href="style/contact/contact.css" type="text/css">

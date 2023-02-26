@@ -54,7 +54,7 @@ nav .navLogo a {
   color: var(--font-color);
 }
 nav .navLogo a img {
-  width: 100px;
+  width: 50px;
   filter: brightness(0);
   height: auto;
 }
@@ -339,4 +339,112 @@ nav.scrolled {
 .booking-container .billing-location-container .billing-btn {
   background-color: var(--secondary);
   color: var(--font-color);
+}
+
+.profile-section {
+  color: var(--font-color);
+  height: 100vh;
+  background-color: var(--pure-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-section div {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.profile-section-left {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+.profile-section-left .profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.profile-section-left .profile-btn {
+  display: flex;
+  gap: 2rem;
+}
+.profile-section-left .profile-btn .btn-profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: var(--pure-white);
+  background-color: var(--font-color);
+}
+.profile-section-left .profile-btn .delete {
+  background-color: #ff1900;
+}
+
+.profile-section-right {
+  color: var(--pure-white);
+  width: 30%;
+  background-color: var(--ui);
+  border-radius: 15px 0px 0px 15px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.profile-edit-container {
+  background-color: var(--pure-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.profile-edit {
+  width: 50%;
+  padding: 40px;
+  background-color: var(--ui);
+}
+.profile-edit form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.profile-edit form label {
+  border: 1px solid var(--pure-white);
+  color: var(--ui);
+  background-color: var(--pure-white);
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 10px;
+}
+.profile-edit form label input[type=text], .profile-edit form label input[type=number] {
+  border: none;
+}
+.profile-edit form input {
+  font-family: "Poppins", sans-serif;
+  width: 70%;
+}
+.profile-edit form input[type=submit], .profile-edit form .btn {
+  width: 70%;
+  text-align: center;
+  text-decoration: none;
+  color: var(--font-color);
+  border: none;
+  background-color: var(--secondary);
+  padding: 0.7rem;
+}
+.profile-edit .message {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  color: var(--pure-white);
+  background-color: #ff1900;
 }
