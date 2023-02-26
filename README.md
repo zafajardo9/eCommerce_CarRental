@@ -14,8 +14,8 @@ The code is not suited for production and was developed as a personal and colleg
 
 ## Documentation
 
-[Database Report](https://github.com/zafajardo9/eCommerce_CarRental/raw/main/documentation/DATABASE%20REPORT.pdf)
-[UI/UX Report](https://github.com/zafajardo9/eCommerce_CarRental/raw/main/documentation/UIUX%20Design.pdf)
+- [Database Report](https://github.com/zafajardo9/eCommerce_CarRental/raw/main/documentation/DATABASE%20REPORT.pdf)
+- [UI/UX Report](https://github.com/zafajardo9/eCommerce_CarRental/raw/main/documentation/UIUX%20Design.pdf)
 
 
 ## Contributing
