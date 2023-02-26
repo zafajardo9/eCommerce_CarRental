@@ -41,15 +41,29 @@ if(isset($_GET['delete'])){
         ?>
         <div class="profile-details">
             <h1>MY DETAILS</h1>
-            <h1>
-                <?php echo $_SESSION['userName']; ?>
-            </h1>
-            <h4>
-                NAME : <?php echo $row['FullName']; ?>
-            </h4>
-            <h4>
-                EMAIL : <?php echo $row['Email']; ?>
-            </h4>
+            <div>
+                <div class="circle">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                
+                <p>
+                    <?php echo $_SESSION['userName']; ?>
+                </p>
+                
+            </div>
+                <i class="fa-solid fa-signature"></i>
+                <p>
+                    
+                    <?php echo $row['FullName']; ?>
+                </p>
+
+            <div>
+                <i class="fa-solid fa-envelope"></i>
+                <p>
+                    <?php echo $row['Email']; ?>
+                </p>
+                
+            </div>
         </div>
 
         <?php

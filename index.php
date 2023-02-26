@@ -1,11 +1,34 @@
 <?php
 include_once 'header.php';
 ?>
+
+<div class="preloader">
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+        <div class="wheel"></div>
+        <div class="hamster">
+            <div class="hamster__body">
+                <div class="hamster__head">
+                    <div class="hamster__ear"></div>
+                    <div class="hamster__eye"></div>
+                    <div class="hamster__nose"></div>
+                </div>
+                <div class="hamster__limb hamster__limb--fr"></div>
+                <div class="hamster__limb hamster__limb--fl"></div>
+                <div class="hamster__limb hamster__limb--br"></div>
+                <div class="hamster__limb hamster__limb--bl"></div>
+                <div class="hamster__tail"></div>
+            </div>
+        </div>
+        <div class="spoke"></div>
+    </div>
+</div>
+
+
     <div class="hero">
         <div class="left">
             <h1>Welcome to RoadTrip </h1>
             <p>sskkrrttt sskkrrttt bbbrrtttbbbrttt</p>
-            <input type="button" value="Get Started" class="btn">
+            <a href="car.php"><input type="button" value="Get Started" class="btn"></a>
         </div>
         <div class="right">
 

@@ -2,32 +2,24 @@
         //FOR INSERTING 
         if (isset($_POST['rent'])) {
 
-            //For Start Date 
-            // $dateStart = $_POST['startDate'];
-            // $startDate = date("Y-m-d", strtotime($dateStart));
-            // //For End Date
-            // $dateEnd = $_POST['endDate'];
-            // $endDate = date("Y-m-d", strtotime($dateEnd));
-
 
             $startDate = date('Y-m-d', strtotime($_POST['startDate']));
             $endDate = date('Y-m-d', strtotime($_POST['endDate']));
-
-
-            echo $startDate;
-            echo $endDate;
-
-            // $interval =   date_diff(date_create(date('Y-m-d', $date1)), date_create(date('Y-m-d', $date2)));
-            // echo "The difference between ".date('Y-m-d', $date1)." and ".date('Y-m-d', $date2)." is ".$interval->format('%a')." days.";
-
-            //current date
             $currentDate = date("Y-m-d");
 
-            // $difference = $startDate - $endDate;
-            // floor($difference / 86400);
-            $difference = ($startDate - $endDate)/60/60/24;
-            //$totalAmount = $difference * $row['RentPrice']; //,di gagana
-            $totalAmount = 1200; // gagawan pa ng computation
+
+            //for calculations
+            // Convert date strings to UNIX timestamps
+            // $date1Timestamp = strtotime($_POST['startDate']);
+            // $date2Timestamp = strtotime($_POST['endDate']);
+            // Calculate difference between dates in seconds
+            $difference = strtotime($_POST['startDate']) - strtotime($_POST['endDate']);
+            // Convert difference from seconds to days
+            $differenceindays = abs($difference / (60 * 60 * 24)); //value ng days
+
+            //$_POST['rentprice'];
+
+            $totalAmount = $differenceindays *  $_POST['rentprice']; // gagawan pa ng computation
 
             
 
@@ -42,7 +34,7 @@
                 $endDate,
                 $_POST['userId'],
                 $_POST['carId'],
-                'double'
+                'rent' //forRent or rent
             );
             $billing = array(
                 $currentDate,

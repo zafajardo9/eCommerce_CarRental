@@ -58,6 +58,7 @@ sqlsrv_execute($stmt);
         </div>
         
         <?php
+        $price = $row['RentPrice'];
         }
         ?>
 
@@ -69,6 +70,7 @@ sqlsrv_execute($stmt);
         <form action="includes/booking.inc.php" method="POST">
             <input type="hidden" name="userId" value="<?= $_SESSION['userId']?>">
             <input type="hidden" name="carId" value="<?= $_GET['id']?>">
+            <input type="hidden" name="rentprice" value="<?= $price?>">
             <h3>Start Date</h3>
             <input type="date" name="startDate" id="">
             <h3>End Date</h3>
