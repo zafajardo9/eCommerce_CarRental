@@ -49,7 +49,9 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 ## Tech Stack
 
 **Client:** Vanilla JS, JQuery, SCSS, PHP
+
 **Database:** Microsoft SQL Server
+
 **Server:** Apache
 
 
