@@ -48,8 +48,8 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS, SCSS
-
+**Client:** Vanilla JS, JQuery, SCSS, PHP
+**Database:** Microsoft SQL Server
 **Server:** Apache
 
 
@@ -62,7 +62,14 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+![App Screenshot](https://raw.githubusercontent.com/zafajardo9/eCommerce_CarRental/main/documentation/1.jpg)
+![App Screenshot](https://raw.githubusercontent.com/zafajardo9/eCommerce_CarRental/main/documentation/2.jpg)
+![App Screenshot](https://raw.githubusercontent.com/zafajardo9/eCommerce_CarRental/main/documentation/3.jpg)
+![App Screenshot](https://raw.githubusercontent.com/zafajardo9/eCommerce_CarRental/main/documentation/4.jpg)
+![App Screenshot](https://raw.githubusercontent.com/zafajardo9/eCommerce_CarRental/main/documentation/5.jpg)
+![App Screenshot](https://raw.githubusercontent.com/zafajardo9/eCommerce_CarRental/main/documentation/6.jpg)
+![App Screenshot](https://raw.githubusercontent.com/zafajardo9/eCommerce_CarRental/main/documentation/7.jpg)
 
 
 ## Usage/Examples
@@ -105,6 +112,28 @@ function createUser($conn, $name, $userName, $email, $phoneNumber, $pwd) {
     header("location: ../signup.php?error=none");
     exit();
 }
+```
+
+```sql
+
+--JOINING TABLE BOOKING AND BILLING
+SELECT *
+FROM Booking
+INNER JOIN Billing ON Booking.[BookingID] = Billing.[BookingID];
+
+--CREATING STORED PROCEDURE FOR INSERTING CAR
+CREATE PROCEDURE SP_INSERT_CAR
+	@p_Registration_Number AS BIGINT
+	,@p_Model AS VARCHAR(255)
+	,@p_Brand AS VARCHAR(255)
+	,@p_TransmissionType AS VARCHAR(255)
+	,@p_RentPrice AS DECIMAL(10,2)
+	,@p_CarImage AS VARCHAR(255)
+AS
+INSERT INTO Car
+	(Registration_Number, Model, Brand, TransmissionType, RentPrice, CarImage)
+VALUES
+	(@p_Registration_Number, @p_Model, @p_Brand, @p_TransmissionType, @p_RentPrice, @p_CarImage)
 ```
 
 
