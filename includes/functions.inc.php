@@ -64,11 +64,11 @@ function uidExist($conn, $email) {
 
 function createUser($conn, $name, $userName, $email, $phoneNumber, $pwd) {
 
-
-    $tsql= "INSERT INTO Customer (UserName, FullName, Email, PhoneNumber, [Password]) VALUES (?,?,?,?,?);";
+    //INSERT INTO Customer (UserName, FullName, Email, PhoneNumber, [Password]) VALUES (?,?,?,?,?);
+    $tsql= "SP_INSERT_CUSTOMER ?,?,?,?,?";
     
     //hashing of password
-    $hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
+    $hashedpwd =  password_hash($pwd, PASSWORD_DEFAULT);
 
     $params = array(&$userName, &$name, &$email, &$phoneNumber, &$hashedpwd);
 
@@ -98,10 +98,11 @@ function emptyInputLogin($email, $pwd) {
 
 function loginUser($conn, $email, $pwd) {
 
-    $query = "SELECT * FROM Customer WHERE Email = ?;";//AND userPwd = ?
+    //SELECT * FROM Customer WHERE Email = ?;
+    $query = "SP_CUSTOMER_LOGIN ?;";//AND userPwd = ?
     // Prepare the statement
 
-    $stmt = sqlsrv_prepare($conn, $query, array(&$email));
+    $stmt = sqlsrv_prepare($conn, $query, array(&$email));//mas maganda walang array
     // Execute the statement
     sqlsrv_execute($stmt);
     // Check if the query returned any results
@@ -164,7 +165,7 @@ function FormatErrors( $errors ) {
 //gawa nalang function dito para mahimay
 
 function createBooking($conn, $location, $booking, $billing) {
-
+    //LOCATION TABLE
     $sql1 = "INSERT INTO [Location] (LocationName, Street, City, ZipCode) VALUES (?, ?, ?, ?);
             SELECT SCOPE_IDENTITY() AS location_id";
 
@@ -177,10 +178,10 @@ function createBooking($conn, $location, $booking, $billing) {
         sqlsrv_next_result($stmt1);
         sqlsrv_fetch($stmt1);
         $location_last_id = sqlsrv_get_field($stmt1, 0);
-        header("location: test.php?success=1");
+        header("location: ../booking.php?success=1");
     } 
 
-    
+    //BOOKING TABLE
     $sql2 = "INSERT INTO Booking (FromDate, EndDate, CustomerID, CarID, [Status], LocationID) VALUES (?,?,?,?,?, '$location_last_id');
             SELECT SCOPE_IDENTITY() AS booking_id;";
 
@@ -193,15 +194,21 @@ function createBooking($conn, $location, $booking, $billing) {
         sqlsrv_next_result($stmt2);
         sqlsrv_fetch($stmt2);
         $booking_last_id = sqlsrv_get_field($stmt2, 0);
-        header("location: test.php?success=2");
+        header("location: ../booking.php?success=2");
     } 
 
-    $sql1 = "INSERT INTO Billing ( BillDate, BillStatus, TotalAmount, BookingID) VALUES (?,?,?, $booking_last_id);";
+    //BILLING TABLE
+    $sql3 = "INSERT INTO Billing ( BillDate, BillStatus, TotalAmount, BookingID) VALUES (?,?,?, $booking_last_id);";
     //$params3 = array();
-    $stmt1 = sqlsrv_query($conn, $sql1, $billing);
-    if ($stmt1 === false) {
+    $stmt3 = sqlsrv_query($conn, $sql3, $billing);
+    if ($stmt3 === false) {
       die(print_r(sqlsrv_errors(), true));
     }
+    if ($stmt3) {
+        
+        header("location: ../billing.php?success=$booking_last_id");
+    } 
+    
 
 
 }

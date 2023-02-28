@@ -26,19 +26,20 @@ if(isset($_POST['update_profile'])){
         empty($number)) {
         $message[] = 'please fill out all!';    
     }else{
-    
-        $update_data = "UPDATE Customer SET UserName='$username', 
+        
+        $params = array($username, $name, $email, $number, $id);
+        /**
+         * UPDATE Customer SET UserName='$username', 
                     FullName='$name',
                     Email='$email',
                     PhoneNumber='$number'
-                    WHERE CustomerID = '$id'";
-        $upload = sqlsrv_query($conn, $update_data);
+                    WHERE CustomerID = '$id'
+         */
+// SP_CUSTOMER_UPDATE ?, ?, ?, ?, ?
+        $update_data = "SP_CUSTOMER_UPDATE ?, ?, ?, ?, ?";
+        $upload = sqlsrv_query($conn, $update_data, $params);
     
-        if($upload){
-            header('location:admin.php');
-        }else{
-            $message[] = 'please fill out all!'; 
-        }
+
     
         }
     };

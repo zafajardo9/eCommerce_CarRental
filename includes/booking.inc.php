@@ -32,7 +32,7 @@
                 $endDate,
                 $_POST['userId'],
                 $_POST['carId'],
-                'rent' //forRent or rent
+                'rent' //forRent or rent & available
             );
             $billing = array(
                 $currentDate,

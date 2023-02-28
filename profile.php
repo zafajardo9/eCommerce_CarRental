@@ -16,7 +16,7 @@ if (!isset($_SESSION['userId'])) {
 }
 //Get ID then will find the ID
 $userid = $_SESSION['userId'];
-$show = "SELECT * FROM Customer WHERE CustomerID = $userid";
+$show = "SP_CUSTOMER_DISPLAY $userid";
 $stmt= sqlsrv_query($conn, $show);
 
 sqlsrv_execute($stmt);
@@ -26,7 +26,8 @@ sqlsrv_execute($stmt);
 if(isset($_GET['delete'])){
         
     $id = intval($_GET['delete']);
-    sqlsrv_query($conn, "DELETE FROM Customer WHERE CustomerID = $id");
+    //DELETE FROM Customer WHERE CustomerID = $id
+    sqlsrv_query($conn, "SP_CUSTOMER_DELETE $id");
     header('location:profile.php');
 };
 
@@ -47,20 +48,20 @@ if(isset($_GET['delete'])){
                 </div>
                 
                 <p>
-                    <?php echo $_SESSION['userName']; ?>
+                    <?= $_SESSION['userName']; ?>
                 </p>
                 
             </div>
                 <i class="fa-solid fa-signature"></i>
                 <p>
                     
-                    <?php echo $row['FullName']; ?>
+                    <?= $row['FullName']; ?>
                 </p>
 
             <div>
                 <i class="fa-solid fa-envelope"></i>
                 <p>
-                    <?php echo $row['Email']; ?>
+                    <?= $row['Email']; ?>
                 </p>
                 
             </div>
@@ -76,7 +77,44 @@ if(isset($_GET['delete'])){
         </div>
     </div>
     <div class="profile-section-right">
-        <h1>Activity</h1>
+        <h1>User Activity</h1>
+
+        <?php
+        $showBooking = "SELECT *
+                        FROM Booking
+                        INNER JOIN Billing ON Booking.[BookingID] = Billing.[BookingID]
+                        WHERE Booking.CustomerID = $userid";
+        $stmt2= sqlsrv_query($conn, $showBooking);
+        sqlsrv_execute($stmt2);
+        ?>
+        <div class="cards-container">
+            <?php
+            while ($row = sqlsrv_fetch_array($stmt2, SQLSRV_FETCH_ASSOC)) {
+            ?>
+            <!-- FromDate,EndDate,BillDate,TotalAmount -->
+            <div class="card">
+                <div class="fromdate">
+                    <p>From Date</p>
+                    <p><?= $row['FromDate']->format('Y-m-d'); ?></p>
+                </div>
+                <div class="enddate">
+                    <p>End Date</p>
+                    <p><?= $row['EndDate']->format('Y-m-d'); ?></p>
+                </div>
+                <div class="billdate">
+                    <p>Date of Bill</p>
+                    <p><?= $row['BillDate']->format('Y-m-d'); ?></p>
+                </div>
+                <div class="price">
+                    <p>₱ <?= number_format($row['TotalAmount'], 2); ?></p>
+                </div>
+                
+            </div>
+            <?php
+            }
+            ?>
+
+        </div>
     </div>
 </section>
 

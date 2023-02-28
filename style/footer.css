@@ -1,0 +1,55 @@
+:root {
+    --font-color: #08090A;
+    --pure-white:  #fff;
+    --white: #A7A2A9;
+    --secondary: #A7A2A9;
+    --third: #575A5E;
+    --ui: #222823;
+
+}
+
+.footer{
+    background: var(--pure-white);
+    display: flex;
+    height: 40vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .footer h2{
+        color: var(--font-color);
+        font-size: 1.8rem;
+        }
+        .footer .box{
+        margin-top: 1rem;
+        padding: 4px 8px;
+        width: 350px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer input, .btn {
+        padding: 9px;
+    }
+    .footer .btn{
+        background: var(--ui);
+        text-decoration: none;
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer .fa-solid {
+    font-size: 1rem;
+    color: #fff;
+}
+.footer input {
+        width: 100%;
+        border: 1px solid var(--font-color);
+        height: 100%;
+    }

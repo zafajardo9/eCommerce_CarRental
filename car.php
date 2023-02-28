@@ -92,3 +92,8 @@ while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 
 </section>
 
+
+<?php
+include_once 'footer.php';
+
+?>

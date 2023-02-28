@@ -33,8 +33,7 @@ if (isset($_POST['rentSubmit'])) {
             $message[] = 'Please Fill all';
     } else {
         
-        $sql = "INSERT INTO Car(Registration_Number, Model, Brand, TransmissionType, RentPrice, CarImage)
-        VALUES(?,?,?,?,?,?)";
+        $sql = "SP_INSERT_CAR ?,?,?,?,?,?";
         $params = array($carNumber, $carModel, $carBrand, $carType, $carPrice, $carImg);
         $getResults= sqlsrv_query($conn, $sql, $params);
         if ($getResults) {
@@ -51,7 +50,7 @@ if (isset($_POST['rentSubmit'])) {
 if(isset($_GET['delete'])){
         
     $id = intval($_GET['delete']);
-    sqlsrv_query($conn, "DELETE FROM Car WHERE CarID = $id");
+    sqlsrv_query($conn, "SP_DELETE_CAR $id");
     header('location:admin.php');
 };
 
@@ -122,7 +121,7 @@ if(isset($_GET['delete'])){
 <?php
 //include_once '../includes/dbh.inc.php';
 //SELECT
-$show = "SELECT * FROM Car";
+$show = "SP_LIST_CAR"; //SELECT * FROM Car
 $stmt= sqlsrv_query($conn, $show);
 sqlsrv_execute($stmt);
 ?>
@@ -144,9 +143,6 @@ sqlsrv_execute($stmt);
 
                 <?php
                         
-
-                        
-
                     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
 
                 ?>

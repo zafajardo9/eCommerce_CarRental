@@ -1,6 +1,12 @@
 <?php
 include_once 'header.php';
 ?>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+
+
 
 <div class="preloader">
     <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
@@ -43,8 +49,8 @@ include_once 'header.php';
                     <i class="fa-solid fa-rocket"></i>
                     <h1>Convenient and Easy to Rent</h1>
                     
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                        Voluptas nostrum voluptate quia, reiciendis ea adipisci!</p>
+                    <p>Using this website provides convenience in renting a car, 
+                        allowing for easy selection of available cars and efficient booking and payment processes.</p>
                     
                 </div>
 
@@ -52,8 +58,9 @@ include_once 'header.php';
                     <i class="fa-solid fa-truck-fast"></i>
                     <h1>Flexible and Fast</h1>
                     
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                        Voluptas nostrum voluptate quia, reiciendis ea adipisci!</p>
+                    <p>Easily find and available cars that suit your different requirements, like no cancellation fees.
+                        We’re working with our partners to keep you safe and in the driving seat.
+                    </p>
                     
                 </div>
 
@@ -61,8 +68,9 @@ include_once 'header.php';
                     <i class="fa-solid fa-shield-halved"></i>
                     <h1>Safe and Secured</h1>
                     
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                        Voluptas nostrum voluptate quia, reiciendis ea adipisci!</p>
+                    <p>We are completely free to use; no hidden charges or fees.
+                        Here, we prioritize your safety. We’re working with our partners to keep you safe and in the driving seat.
+                    </p>
                     
                 </div>
 
@@ -71,24 +79,29 @@ include_once 'header.php';
                 </div>
         </div>
     </div>
-    CAROUSEL
-
-    <div class="card-container">
-                <div class="card">asdf</div>
-                <div class="card">adf</div>
-                <div class="card">asdf</div>
-                <div class="card">asdf</div>
-                <div class="card">asdf</div>
-    </div>
     
 
 
+<?php
+include_once 'carousel.php';
+?>
+
+ 
+
+
+
+
+
     <!----===================FOOTER====================---->
-    FOOTER
+<?php
+include_once 'footer.php';
+?>
 
 
     <!-- Placed at the end of the document so the pages load faster ============================================= -->
+    
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
     <script src="./js/index.js"></script>
 </body>
 </html>
